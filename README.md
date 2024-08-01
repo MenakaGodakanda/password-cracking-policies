@@ -85,6 +85,7 @@ hashcat -m 1400 -a 0 hashed-passwords.txt password-list.txt -o cracked-passwords
 ```sh
 python3 analysis/password_analysis.py
 ```
+![Screenshot 2024-08-01 162433](https://github.com/user-attachments/assets/9e80f9e2-d7af-4148-aff1-5672331560eb)
 
 ### 7. Policy Development:
 - Develop strong password policies based on findings and save them in `policy/password_policy.md`.
