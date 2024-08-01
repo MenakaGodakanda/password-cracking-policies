@@ -49,24 +49,34 @@ sudo apt install hashcat
 ```
 
 ### 3. Password List Creation:
-- Created a list of sample passwords and saved it in `password-list.txt`.
+- Created a list of sample passwords and saved it in `password-list.txt`. <br>
+![Screenshot 2024-08-01 155158](https://github.com/user-attachments/assets/25aee8ea-4659-4b91-b1fc-66e1371e38f4)
 
 ### 4. Password Hashes Generation:
-
 ```
 python3 password_hashes.py
 ```
+![Screenshot 2024-08-01 040316](https://github.com/user-attachments/assets/ec4ad2b1-518e-4b4e-bdf1-156126e4a286)
+- Verify the password hashes are generated.
+![Screenshot 2024-08-01 042906](https://github.com/user-attachments/assets/e0edda94-716a-48c6-8d1f-3bae1aa99c92)
+
 ### 5. Cracking Passwords:
 - Crack Passwords with `John the Ripper`:
 ```sh
 john --format=raw-sha256 --wordlist=password-list.txt hashed-passwords.txt
 john --show hashed-passwords.txt
 ```
+![Screenshot 2024-08-01 041445](https://github.com/user-attachments/assets/a9bbe278-b69a-4bac-a29d-1ecbb6ba2fc2)
+![Screenshot 2024-08-01 041737](https://github.com/user-attachments/assets/574e8496-b931-4e65-9f53-085aeefc1909)
 
 - Alternatively, crack Passwords with `Hashcat`:
 ```sh
 hashcat -m 1400 -a 0 hashed-passwords.txt password-list.txt -o cracked-passwords.txt
 ```
+![Screenshot 2024-08-01 042150](https://github.com/user-attachments/assets/daa1d91e-895d-4d4c-96d5-96c05fbd26b1)
+![Screenshot 2024-08-01 042214](https://github.com/user-attachments/assets/d06a8919-061a-4d11-8e81-d60e7dea8cd6)
+- Verify the the passwords has been successfully cracked (`cracked-passwords.txt`).
+![Screenshot 2024-08-01 042851](https://github.com/user-attachments/assets/96b3ea5a-9e34-4359-b9e9-1a2ee3882094)
 
 ### 6. Analyze Cracked Passwords:
 - The `password_analysis.py` script produces a histogram of password lengths. 
