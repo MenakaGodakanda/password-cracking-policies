@@ -90,7 +90,7 @@ python3 analysis/password_analysis.py
 ![Screenshot 2024-08-01 162433](https://github.com/user-attachments/assets/9e80f9e2-d7af-4148-aff1-5672331560eb)
 
 - The x-axis represents the length of the passwords. The lengths range from 5 to 11 characters.
-The y-axis represents the frequency of passwords of each length, i.e., the number of passwords with a specific length.
+- The y-axis represents the frequency of passwords of each length, i.e., the number of passwords with a specific length.
 - Each bar represents the number of passwords of a certain length.
 - The heights of the bars indicate the frequency of passwords of that length.
 - The generated histogram provides a clear visual representation of the password lengths, which helps in understanding the weaknesses in the current password practices and developing more effective policies for password security.
@@ -142,7 +142,7 @@ cd ../run
 - Crack Passwords with `John the Ripper`:
 ```sh
 john --format=raw-sha256 --wordlist=password-list.txt hashed-passwords.txt
-john --show hashed-passwords.txt
+john --show --format=raw-sha256 hashed-passwords.txt
 ```
 
 ## Project Structure
@@ -153,11 +153,11 @@ password-cracking-policies/
 ├── hashed-passwords.txt
 ├── analysis/
 │   ├── analysis.md
-│   ├── password_analysis.py
+│   └── password_analysis.py
 ├── policy/
-│   ├── password_policy.md
+│   └── password_policy.md
 ├── password_hashes.py
-├── README.md
+└── README.md
 ```
 
 ## License
