@@ -1,4 +1,4 @@
-# password-cracking-policies
+# Password Cracking Policies
 Demonstrate the importance of strong password policies by performing password-cracking exercises.<br>
 <a href="https://github.com/MenakaGodakanda/password-cracking-policies/blob/main/Project_Description.md">Project Description</a>
 
@@ -57,17 +57,19 @@ sudo apt install hashcat
 python3 password_hashes.py
 ```
 ![Screenshot 2024-08-01 040316](https://github.com/user-attachments/assets/ec4ad2b1-518e-4b4e-bdf1-156126e4a286)
-- Verify the password hashes are generated.
+- Verify the password hashes are generated (`hashed-passwords.txt`).<br>
 ![Screenshot 2024-08-01 042906](https://github.com/user-attachments/assets/e0edda94-716a-48c6-8d1f-3bae1aa99c92)
 
 ### 5. Cracking Passwords:
 - Crack Passwords with `John the Ripper`:
 ```sh
 john --format=raw-sha256 --wordlist=password-list.txt hashed-passwords.txt
-john --show hashed-passwords.txt
+john --show --format=raw-sha256 hashed-passwords.txt
 ```
 ![Screenshot 2024-08-01 041445](https://github.com/user-attachments/assets/a9bbe278-b69a-4bac-a29d-1ecbb6ba2fc2)
+- The above screen capture demonstrates that `John the Ripper` successfully cracked all the passwords.<br><br>
 ![Screenshot 2024-08-01 041737](https://github.com/user-attachments/assets/574e8496-b931-4e65-9f53-085aeefc1909)
+- The above screen capture demonstrates that `John the Ripper` successfully displayed the cracked passwords.
 
 - Alternatively, crack Passwords with `Hashcat`:
 ```sh
@@ -75,20 +77,34 @@ hashcat -m 1400 -a 0 hashed-passwords.txt password-list.txt -o cracked-passwords
 ```
 ![Screenshot 2024-08-01 042150](https://github.com/user-attachments/assets/daa1d91e-895d-4d4c-96d5-96c05fbd26b1)
 ![Screenshot 2024-08-01 042214](https://github.com/user-attachments/assets/d06a8919-061a-4d11-8e81-d60e7dea8cd6)
-- Verify the the passwords has been successfully cracked (`cracked-passwords.txt`).
+- The output from `Hashcat` indicates that all the passwords in the `hashed-passwords.txt` file have been successfully cracked using the `password-list.txt` wordlist.
+- Ensure that the `cracked-passwords.txt` file contains the cracked passwords. Each line should correspond to a hash and its cracked password.<br>
 ![Screenshot 2024-08-01 042851](https://github.com/user-attachments/assets/96b3ea5a-9e34-4359-b9e9-1a2ee3882094)
 
 ### 6. Analyze Cracked Passwords:
 - The `password_analysis.py` script produces a histogram of password lengths. 
-- This histogram shows the frequency distribution of password lengths among the cracked passwords.
-- Run the script:
+- This histogram shows the frequency distribution of password lengths among the cracked passwords. Run the script:
 ```sh
 python3 analysis/password_analysis.py
 ```
 ![Screenshot 2024-08-01 162433](https://github.com/user-attachments/assets/9e80f9e2-d7af-4148-aff1-5672331560eb)
 
+- The x-axis represents the length of the passwords. The lengths range from 5 to 11 characters.
+The y-axis represents the frequency of passwords of each length, i.e., the number of passwords with a specific length.
+- Each bar represents the number of passwords of a certain length.
+- The heights of the bars indicate the frequency of passwords of that length.
+- The generated histogram provides a clear visual representation of the password lengths, which helps in understanding the weaknesses in the current password practices and developing more effective policies for password security.
+- **Common Lengths**:
+  - Most passwords are 6 characters long. This shows a tendency towards shorter, potentially weaker passwords.
+- **Rare Lengths**:
+  - Passwords of length 5 and 11 are the least common.
+
+- A detailed analysis of the cracked password is explained in detail (`analysis.md`).<br>
+<a href="https://github.com/MenakaGodakanda/password-cracking-policies/blob/main/analysis/analysis.md">Analysis of Cracked Passwords</a>
+
 ### 7. Policy Development:
-- Develop strong password policies based on findings and save them in `policy/password_policy.md`.
+- Develop strong password policies based on findings and save them in `policy/password_policy.md`.<br>
+<a href="https://github.com/MenakaGodakanda/password-cracking-policies/blob/main/policy/password_policy.md">Password Policy</a>
 
 ## Troubleshooting
 
